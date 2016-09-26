@@ -3,6 +3,7 @@ package com.example.andrewlane.noaa_forecast;
 /**
  * Created by andrewlane on 9/19/16.
  */
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.LruCache;
@@ -55,7 +56,7 @@ public class RequestSingleton {
         return mRequestQueue;
     }
 
-    public <T> void addToRequestQueue(Request<T> req,String tag) {
+    public <T> void addToRequestQueue(Request<T> req, String tag) {
         req.setTag(tag);
         getRequestQueue().add(req);
     }
