@@ -1,4 +1,4 @@
-package com.example.andrewlane.noaa_forecast;
+package com.example.andrewlane.forecast;
 
 import org.junit.Test;
 

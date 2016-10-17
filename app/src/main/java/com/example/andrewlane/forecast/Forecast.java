@@ -1,4 +1,6 @@
-package com.example.andrewlane.noaa_forecast;
+package com.example.andrewlane.forecast;
+
+import org.json.JSONObject;
 
 import java.util.Date;
 
@@ -14,6 +16,17 @@ public class Forecast {
     private static String wind;
     private static String dewPoint;
     //TODO other weather shit
+
+    public static String res;
+
+    public Forecast(JSONObject obj) {
+        this.res = obj.toString();
+    }
+
+    public static String getRes() {
+        return res;
+    }
+
 
     public static String getTemperature() {
         return temperature;

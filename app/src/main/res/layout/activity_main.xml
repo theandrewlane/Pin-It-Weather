@@ -17,26 +17,14 @@
         android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/button_get_string"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Get String "/>
-    <Button
         android:id="@+id/button_get_Json_object"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:onClick="doit"
         android:text="Get JsonObject "/>
-    <Button
-        android:id="@+id/button_get_Json_array"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Get JsonArray "/>
+
     <Button
         android:id="@+id/button_get_image"
         android:layout_marginTop="5dp"
