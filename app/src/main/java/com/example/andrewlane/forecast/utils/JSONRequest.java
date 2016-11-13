@@ -11,13 +11,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.andrewlane.forecast.MainActivity;
 import com.example.andrewlane.forecast.app.AppController;
 
-import org.greenrobot.eventbus.EventBus;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-
-//import static com.example.andrewlane.forecast.app.AppController.logTag;
 
 /**
  * Created by andrewlane on 10/11/16.
@@ -30,8 +27,6 @@ public class JSONRequest {
         this.TOKEN = token;
         this.PARAM = params;
     }
-
-    private EventBus bus = EventBus.getDefault();
 
     private String logTag = "\n-----JSON REQUEST: ";
     private String tag_json_obj;
@@ -63,7 +58,6 @@ public class JSONRequest {
                     @Override
                     public void onResponse(JSONObject response) {
                         callback.onSuccess(response);
-                        bus.postSticky(new responseRecievedEvent(response));
                         Log.d(logTag, response.toString());
                     }
                 }, new Response.ErrorListener() {

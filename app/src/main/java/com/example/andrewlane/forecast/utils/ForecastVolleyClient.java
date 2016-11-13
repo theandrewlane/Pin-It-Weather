@@ -1,36 +1,12 @@
-package com.example.andrewlane.forecast;
+package com.example.andrewlane.forecast.utils;
 
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.example.andrewlane.forecast.model.Forecast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Cache;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.example.andrewlane.forecast.utils.JSONRequest;
-import com.example.andrewlane.forecast.utils.VolleyCallback;
-import com.example.andrewlane.forecast.utils.responseRecievedEvent;
-
-import org.json.JSONArray;
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static android.R.id.list;
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by andrewlane on 9/25/16.
@@ -38,7 +14,10 @@ import static android.content.ContentValues.TAG;
  * This class should be used to abstract the calling of weather APIs needed for the main activity
  */
 
-public class WeatherHelper {
+public class ForecastVolleyClient {
+
+    private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
+    private static String IMG_URL = "http://openweathermap.org/img/w/";
 
     private static final String apiURL = "http://api.openweathermap.org/data/2.5/weather?q=London";
     //    private static final String apiToken = "sPOCtHPDQWSPzBLPKEjuUulUUQotaViW";
@@ -50,6 +29,7 @@ public class WeatherHelper {
     private JSONRequest req;
     private String geoCoord;
     Forecast forecast;
+    ForecastParser forecastParser;
 
 
     private String type; //Implementation TBD
@@ -66,7 +46,7 @@ public class WeatherHelper {
 
     private List<?> params;
 
-    public WeatherHelper(String geoCoord, String type, Boolean subscribe, JSONRequest req) {
+    public ForecastVolleyClient(String geoCoord, String type, Boolean subscribe, JSONRequest req) {
         this.geoCoord = geoCoord;
         this.type = type;
         this.subscribe = subscribe;
@@ -75,13 +55,13 @@ public class WeatherHelper {
 
 
     //Based on the required request type, call the right function.
-    public void makeWeatherRequest() {
+    public void makeForecastRequest() {
         switch (type) {
             case "week":
                 getWeekForecast();
                 break;
             case "day":
-                getDayForcast();
+                getDayForecast();
                 break;
             case "sub":
                 subScribeLocationNotification();
@@ -90,18 +70,25 @@ public class WeatherHelper {
     }
 
     //TODO - subscribe to the res callback of makeJsonObjReq in JSONReq
-    private Forecast getDayForcast() {
+    private Forecast getDayForecast() {
         req = new JSONRequest(apiURL, apiToken, null);
         req.makeJsonObjReq(new VolleyCallback() {
             @Override
             public void onSuccess(JSONObject result) {
-                forecast = new Forecast(result);
+                try {
+                    forecast = forecastParser.getForecast(result);
+                    EventBus.getDefault().post(new ForecastReceivedEvent(forecast, type));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 //Call main activity here
-                //bus.postSticky(new responseRecievedEvent(forecast));
             }
         });
         return forecast;
     }
+
+    
 
 
     public Forecast getWeekForecast() {
