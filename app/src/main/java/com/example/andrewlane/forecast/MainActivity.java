@@ -28,7 +28,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import org.greenrobot.eventbus.ThreadMode;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
