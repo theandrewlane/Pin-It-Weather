@@ -1,6 +1,7 @@
 package com.example.andrewlane.forecast.utils;
 
 import com.example.andrewlane.forecast.model.Forecast;
+import com.example.andrewlane.forecast.model.GeoCoordinate;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
@@ -19,7 +20,7 @@ public class ForecastVolleyClient {
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
     private static String IMG_URL = "http://openweathermap.org/img/w/";
 
-    private static final String apiURL = "http://api.openweathermap.org/data/2.5/weather?q=London";
+    private static String apiURL = "http://api.openweathermap.org/data/2.5/weather?";
     //    private static final String apiToken = "sPOCtHPDQWSPzBLPKEjuUulUUQotaViW";
     private static final String apiToken = "a156ffeca825ea08a1eb6fc913257d83";
     private String REQUEST_TAG = "com.andrewlane.noaa-forcast";
@@ -27,7 +28,8 @@ public class ForecastVolleyClient {
     private boolean subscribe; //This flag can subscribe to push alerts
 
     private JSONRequest req;
-    private String geoCoord;
+    private String forcastURL;
+    private GeoCoordinate geoCoord;
     Forecast forecast;
     ForecastParser forecastParser;
 
@@ -46,9 +48,8 @@ public class ForecastVolleyClient {
 
     private List<?> params;
 
-    public ForecastVolleyClient(String geoCoord, String type, Boolean subscribe, JSONRequest req) {
+    public ForecastVolleyClient(GeoCoordinate geoCoord, Boolean subscribe, JSONRequest req) {
         this.geoCoord = geoCoord;
-        this.type = type;
         this.subscribe = subscribe;
         this.req = req;
     }
@@ -71,7 +72,8 @@ public class ForecastVolleyClient {
 
     //TODO - subscribe to the res callback of makeJsonObjReq in JSONReq
     private Forecast getDayForecast() {
-        req = new JSONRequest(apiURL, apiToken, null);
+        forcastURL = queryURL(geoCoord);
+        req = new JSONRequest(forcastURL, apiToken, null);
         req.makeJsonObjReq(new VolleyCallback() {
             @Override
             public void onSuccess(JSONObject result) {
@@ -88,7 +90,10 @@ public class ForecastVolleyClient {
         return forecast;
     }
 
-    
+    private String queryURL(GeoCoordinate gc) {
+        apiURL = apiURL + "=" +gc.getLatitude() + "&lon=" + gc.getLongitude();
+        return apiURL;
+    }
 
 
     public Forecast getWeekForecast() {

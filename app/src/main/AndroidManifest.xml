@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MAPS_RECEIVE"/>
 
     <application
         android:name="com.example.andrewlane.forecast.app.AppController"
@@ -13,6 +14,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+
     <activity android:name="com.example.andrewlane.forecast.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
