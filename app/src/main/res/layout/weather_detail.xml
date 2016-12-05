@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="4"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/weather_overview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            android:layout_weight="2"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            card_view:cardCornerRadius="2dp"
+            card_view:cardElevation="5dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_weight="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tempHigh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="High:"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|bold" />
+
+                    <TextView
+                        android:id="@+id/tvTempHigh"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|italic" />
+
+
+                    <TextView
+                        android:id="@+id/tempLow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Low:"
+                        android:textAlignment="viewStart"
+                        android:textSize="14sp"
+                        android:textStyle="normal|bold" />
+
+                    <TextView
+                        android:id="@+id/tvTempLow"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textStyle="normal|italic"
+                        android:textAlignment="viewStart" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Pressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Pressure:"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|bold" />
+
+                    <TextView
+                        android:id="@+id/tvPressure"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|italic" />
+
+                    <TextView
+                        android:id="@+id/Humidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:gravity="center"
+                        android:text="Humidity:"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|bold" />
+
+                    <TextView
+                        android:id="@+id/tvHumidity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|italic" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/sunset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:gravity="center"
+                        android:text="Sunset:"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|bold" />
+
+                    <TextView
+                        android:id="@+id/tvSunset"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|italic" />
+
+                    <TextView
+                        android:id="@+id/sunrise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:gravity="center"
+                        android:text="Sunrise:"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|bold" />
+
+                    <TextView
+                        android:id="@+id/tvSunrise"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textAlignment="viewStart"
+                        android:textStyle="normal|italic" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+

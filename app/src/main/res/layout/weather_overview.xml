@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="16">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:orientation="vertical"
+                android:weightSum="16">
+
+                <TextView
+                    android:id="@+id/tvCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:textAlignment="center"
+                    android:textStyle="normal|bold" />
+
+
+                <com.github.pwittchen.weathericonview.WeatherIconView
+                    android:id="@+id/weather_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="14"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:textAlignment="center"
+                    custom:weatherIconColor="@android:color/black"
+                    custom:weatherIconResource=""
+                    custom:weatherIconSize="100" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:orientation="vertical"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/tvCurrentCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Current Weather:"
+                    android:textAlignment="viewStart"
+                    android:layout_weight="1"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:id="@+id/tvTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Temperature:"
+                    android:textAlignment="viewStart"
+                    android:layout_weight="1"
+
+                    android:textStyle="normal|bold" />
+
+
+                <TextView
+                    android:id="@+id/tvWind"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Wind:"
+                    android:textAlignment="viewStart"
+                    android:layout_weight="1"
+
+                    android:textStyle="normal|bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+
+
+
