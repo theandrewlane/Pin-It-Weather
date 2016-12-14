@@ -1,6 +1,8 @@
-package com.example.andrewlane.pin_itweather;
+package com.andrewlane.pin_itweather.services;
 
-import com.example.andrewlane.pin_itweather.model.Forecast;
+import com.andrewlane.pin_itweather.events.VolleyCallback;
+import com.andrewlane.pin_itweather.events.ForecastReceivedEvent;
+import com.andrewlane.pin_itweather.model.Forecast;
 import com.google.android.gms.maps.model.LatLng;
 
 import org.greenrobot.eventbus.EventBus;
@@ -23,7 +25,7 @@ public class ForecastVolleyClient {
     private static String apiURL = "http://api.openweathermap.org/data/2.5/weather?";
     //    private static final String apiToken = "sPOCtHPDQWSPzBLPKEjuUulUUQotaViW";
     private static final String apiToken = "a156ffeca825ea08a1eb6fc913257d83";
-    private String REQUEST_TAG = "com.andrewlane.noaa-forcast";
+    private String REQUEST_TAG = "com.andrewlane.pin_itWeather";
     private final String units = "&units=imperial";
 
     private boolean subscribe; //This flag can subscribe to push alerts

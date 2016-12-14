@@ -1,7 +1,9 @@
-package com.example.andrewlane.pin_itweather;
+package com.andrewlane.pin_itweather.services;
 
 import android.util.Log;
 
+import com.andrewlane.pin_itweather.AppController;
+import com.andrewlane.pin_itweather.events.VolleyCallback;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
