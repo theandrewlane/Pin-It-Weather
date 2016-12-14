@@ -42,7 +42,6 @@ public class PinDropFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     JSONObject jsonWeather;
-    private MapFragment mapFragment;
     private TextView windSpeed;
     private TextView humidity;
     private TextView temp;
@@ -55,19 +54,15 @@ public class PinDropFragment extends Fragment {
     private TextView city;
     SaveWeatherFragment dialogFragment;
 
-    private ForecastVolleyClient forecastVolleyClient;
     public Forecast forecast;
     private Location location;
-    private LatLng latLng;
     String token;
     private View rv;
     private MainActivity ma;
     private Typeface weatherFont;
-    private GoogleMap mMap;
     private double longitude;
     private double latitude;
     private CameraUpdate center;
-    private Activity mActivity;
 
     CameraUpdate zoom;
     private WeatherTextView weatherTextView;
@@ -87,7 +82,7 @@ public class PinDropFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mapFragment = new MapFragment();
+        MapFragment mapFragment = new MapFragment();
          dialogFragment = new SaveWeatherFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.add(R.id.mapContainer, mapFragment);
@@ -117,20 +112,19 @@ public class PinDropFragment extends Fragment {
     @Override
     public void onAttach(Activity act) {
         super.onAttach(act);
-        this.mActivity = act;
     }
 
 
     @Subscribe()
     public void moveMap(MapReadyEvent mapReadyEvent) {
-        mMap = mapReadyEvent.getMap();
+        GoogleMap mMap = mapReadyEvent.getMap();
     }
 
 
     @Subscribe()
     public void getWeather(PinDroppedEvent pinDroppedEvent) {
-        latLng = pinDroppedEvent.getLatLon();
-        forecastVolleyClient = new ForecastVolleyClient(latLng, true);
+        LatLng latLng = pinDroppedEvent.getLatLon();
+        ForecastVolleyClient forecastVolleyClient = new ForecastVolleyClient(latLng, true);
         JSONRequest req = forecastVolleyClient.createForecastRequest(forecastVolleyClient.queryURL(latLng));
         req.makeJsonObjReq(new VolleyCallback() {
             @Override
@@ -155,7 +149,6 @@ public class PinDropFragment extends Fragment {
             e.printStackTrace();
         }
 
-        String.valueOf(forecast.location.getLatitude() + forecast.location.getLongitude());
         windSpeed.setText(String.valueOf(forecast.wind.getSpeed()));
         temp.setText(String.valueOf(forecast.temperature.getTemp()));
         humidity.setText(String.valueOf(forecast.currentCondition.getHumidity()));

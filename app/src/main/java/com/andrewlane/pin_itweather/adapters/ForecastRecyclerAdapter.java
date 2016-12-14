@@ -13,17 +13,15 @@ import com.andrewlane.pin_itweather.model.WeatherOverview;
 import java.util.List;
 
 /**
- * Created by andrewlane on 12/14/16.
+ * Created by andrewlane on 12/12/16.
  */
 
 public class ForecastRecyclerAdapter extends RecyclerView.Adapter<ForecastRecyclerAdapter.ViewHolder> {
 
-
     private List<WeatherOverview> weatherOverviewList;
-    private Context context;
 
     public ForecastRecyclerAdapter(Context context, List<WeatherOverview> weatherOverviewList) {
-        this.context = context;
+        Context context1 = context;
         this.weatherOverviewList = weatherOverviewList;
     }
 

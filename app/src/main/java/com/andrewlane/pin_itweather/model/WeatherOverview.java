@@ -38,7 +38,7 @@ public class WeatherOverview {
     }
 
     public String getCurrentTemperature() {
-        return currentTemperature + "°";
+        return currentTemperature;
     }
 
     public void setCurrentTemperature(String currentTemperature) {

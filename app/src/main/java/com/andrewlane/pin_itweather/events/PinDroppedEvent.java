@@ -12,15 +12,13 @@ import com.google.android.gms.maps.model.LatLng;
 public class PinDroppedEvent {
     Location location;
     LatLng latLng;
-    private double longitude;
-    private double latitude;
 
     private String type;
 
     public PinDroppedEvent(LatLng coords) {
         this.latLng = coords;
-        this.latitude = latLng.latitude;
-        this.longitude = latLng.longitude;
+        double latitude = latLng.latitude;
+        double longitude = latLng.longitude;
     }
 
     public LatLng getLatLon() {

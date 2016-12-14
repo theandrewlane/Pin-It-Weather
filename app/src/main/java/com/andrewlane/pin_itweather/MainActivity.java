@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
 
     ScaleAnimation shrinkAnim;
-    private StaggeredGridLayoutManager mLayoutManager;
     private TextView tvNoWeather;
 
     private LinearLayoutManager mLinearLayoutManager;
@@ -73,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
         if (mRecyclerView != null) {
             mRecyclerView.setHasFixedSize(true);
         }
-        
-        mLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+
+        StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         mLayoutManager.setReverseLayout(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
@@ -135,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case 200: {
                 boolean locationPermissionAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                boolean cameraPermissionAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
             }
         }
     }

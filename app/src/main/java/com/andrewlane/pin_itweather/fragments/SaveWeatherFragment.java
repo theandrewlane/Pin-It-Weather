@@ -22,15 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SaveWeatherFragment extends DialogFragment implements TextView.OnEditorActionListener, View.OnClickListener {
 
     private LatLng latLng;
-    private Forecast forecast;
     private EditText mEditText;
-    private Button saveButton;
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference mChildRef = mRootRef.child("condition");
-    private FirebaseDatabase database;
     private DatabaseReference myRef;
-    private String longitude;
-    private String latitude;
     WeatherOverview weatherOverview;
     String currentTemperature;
     String location;
@@ -52,9 +47,9 @@ public class SaveWeatherFragment extends DialogFragment implements TextView.OnEd
     }
 
     public void setForecast(Forecast fc) {
-        this.forecast = fc;
-        this.latitude = String.valueOf(fc.location.getLatitude());
-        this.longitude = String.valueOf(fc.location.getLongitude());
+        Forecast forecast = fc;
+        String latitude = String.valueOf(fc.location.getLatitude());
+        String longitude = String.valueOf(fc.location.getLongitude());
         this.locationName = fc.location.getCity();
         this.currentTemperature = String.valueOf(fc.temperature.getTemp());
         this.currentCondition = fc.currentCondition.getDescr();
@@ -75,8 +70,8 @@ public class SaveWeatherFragment extends DialogFragment implements TextView.OnEd
         View view = inflater.inflate(R.layout.save_weather_fragment, container);
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         mEditText = (EditText) view.findViewById(R.id.pinTitle);
-        saveButton = (Button) view.findViewById(R.id.save);
-        database = FirebaseDatabase.getInstance();
+        Button saveButton = (Button) view.findViewById(R.id.save);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         mEditText.setOnEditorActionListener(this);
         mEditText.requestFocus();
         getDialog().getWindow().setSoftInputMode(
