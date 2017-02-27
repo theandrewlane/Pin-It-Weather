@@ -1,8 +1,10 @@
-package com.example.andrewlane.pin_itweather;
+package com.andrewlane.pin_itweather.services;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.andrewlane.pin_itweather.events.ForecastReceivedEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -18,8 +20,6 @@ public class ForecastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         ForecastReceivedEvent event = null;
-
-
 
     }
 }

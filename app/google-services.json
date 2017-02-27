@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "823520466724",
+    "firebase_url": "https://pin-it-weather.firebaseio.com",
+    "project_id": "pin-it-weather",
+    "storage_bucket": "pin-it-weather.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823520466724:android:c5171ec707913310",
+        "android_client_info": {
+          "package_name": "com.andrewlane.pin_itweather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823520466724-lef4oomb34mfjfpic6561fl3uuiet4nl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andrewlane.pin_itweather",
+            "certificate_hash": "AD942DBE705B2C174997ECE63EDD8058BBE3FC14"
+          }
+        },
+        {
+          "client_id": "823520466724-v2pi1g1oqmdn74eubpluooluo4j770jg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdzOhAoW_q1r8rlUIiVowe2JhHLPaVok8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823520466724-v2pi1g1oqmdn74eubpluooluo4j770jg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

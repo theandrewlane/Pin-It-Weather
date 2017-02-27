@@ -1,7 +1,9 @@
-package com.example.andrewlane.pin_itweather;
+package com.andrewlane.pin_itweather.services;
 
 import android.util.Log;
 
+import com.andrewlane.pin_itweather.AppController;
+import com.andrewlane.pin_itweather.events.VolleyCallback;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -23,15 +25,13 @@ public class JSONRequest {
     public JSONRequest(String endpoint, String token, String params) {
         this.ENDPOINT = endpoint;
         this.TOKEN = token;
-        this.PARAM = params;
+        String PARAM = params;
     }
 
     private String logTag = "\n-----JSON REQUEST: ";
     private String tag_json_obj;
     private String ENDPOINT;
     private String TOKEN;
-    private String PARAM = null;
-    private String cancelReqID = "app-req";
 
 
 //    /**
@@ -86,6 +86,7 @@ public class JSONRequest {
         };
 
         // Adding request to request queue
+        String cancelReqID = "app-req";
         AppController.getInstance().addToRequestQueue(jsonObjReq,
                 cancelReqID);
 

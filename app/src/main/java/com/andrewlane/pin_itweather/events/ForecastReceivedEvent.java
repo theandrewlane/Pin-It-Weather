@@ -1,7 +1,7 @@
-package com.example.andrewlane.pin_itweather;
+package com.andrewlane.pin_itweather.events;
 
 
-import com.example.andrewlane.pin_itweather.model.Forecast;
+import com.andrewlane.pin_itweather.model.Forecast;
 
 /**
  * Created by andrewlane on 10/16/16.

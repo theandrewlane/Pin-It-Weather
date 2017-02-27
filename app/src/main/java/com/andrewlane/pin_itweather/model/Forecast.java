@@ -1,4 +1,4 @@
-package com.example.andrewlane.pin_itweather.model;
+package com.andrewlane.pin_itweather.model;
 
 
 public class Forecast {
@@ -109,14 +109,14 @@ public class Forecast {
     }
 
     public class Wind {
-        private float speed;
+        private String speed;
         private float deg;
 
-        public float getSpeed() {
-            return speed;
+        public String getSpeed() {
+            return speed + "MPH";
         }
 
-        public void setSpeed(float speed) {
+        public void setSpeed(String speed) {
             this.speed = speed;
         }
 

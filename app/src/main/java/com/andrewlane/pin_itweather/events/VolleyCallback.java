@@ -1,4 +1,4 @@
-package com.example.andrewlane.pin_itweather;
+package com.andrewlane.pin_itweather.events;
 
 import org.json.JSONObject;
 

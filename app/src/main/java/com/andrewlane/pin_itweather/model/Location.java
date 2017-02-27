@@ -1,4 +1,4 @@
-package com.example.andrewlane.pin_itweather.model;
+package com.andrewlane.pin_itweather.model;
 
 import java.io.Serializable;
 

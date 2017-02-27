@@ -1,48 +1,17 @@
-package com.example.andrewlane.pin_itweather;
+package com.andrewlane.pin_itweather.services;
 
-import com.example.andrewlane.pin_itweather.model.Forecast;
-import com.example.andrewlane.pin_itweather.model.Location;
+import com.andrewlane.pin_itweather.model.Forecast;
+import com.andrewlane.pin_itweather.model.Location;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Date;
 
 /**
  * Created by andrewlane on 11/12/16.
  */
 
 public class ForecastParser {
-
-    public static String setWeatherIcon(int actualId, long sunrise, long sunset) {
-        int id = actualId / 100;
-        String icon = "";
-        if (actualId == 800) {
-            long currentTime = new Date().getTime();
-            if (currentTime >= sunrise && currentTime < sunset) {
-                icon = "&#xf00d;";
-            } else {
-                icon = "&#xf02e;";
-            }
-        } else {
-            switch (id) {
-                case 2 : icon = String.valueOf(R.string.weather_thunder);
-                    break;
-                case 3 : icon = String.valueOf(R.string.weather_drizzle);
-                    break;
-                case 7 : icon = String.valueOf(R.string.weather_foggy);
-                    break;
-                case 8 : icon = String.valueOf(R.string.weather_cloudy);
-                    break;
-                case 6 : icon = String.valueOf(R.string.weather_snowy);
-                    break;
-                case 5 : icon = String.valueOf(R.string.weather_rainy);
-                    break;
-            }
-        }
-        return icon;
-    }
 
     public static Forecast getForecast(JSONObject jObj) throws JSONException {
         Forecast forecast = new Forecast();
@@ -68,7 +37,7 @@ public class ForecastParser {
         forecast.currentCondition.setWeatherId(getInt("id", JSONWeather));
         forecast.currentCondition.setDescr(getString("description", JSONWeather));
         forecast.currentCondition.setCondition(getString("main", JSONWeather));
-        forecast.currentCondition.setIcon(setWeatherIcon(getInt("id", JSONWeather), getLong("sunrise", sysObj) * 1000, getLong("sunset", sysObj) * 1000));
+        forecast.currentCondition.setIcon(setWeatherIcon(getString("icon", JSONWeather)));
 
 
         JSONObject mainObj = getObject("main", jObj);
@@ -80,7 +49,7 @@ public class ForecastParser {
 
         // Wind
         JSONObject wObj = getObject("wind", jObj);
-        forecast.wind.setSpeed(getFloat("speed", wObj));
+        forecast.wind.setSpeed(getString("speed", wObj));
         forecast.wind.setDeg(getFloat("deg", wObj));
 
         // Clouds
@@ -90,6 +59,49 @@ public class ForecastParser {
         // We download the icon to show
 
         return forecast;
+    }
+
+    private static String setWeatherIcon(String icon) {
+        String drawableName;
+        switch (icon) {
+            case "01d":
+                drawableName = "wi_day_cloudy";
+                break;
+            case "01n":
+                drawableName = "wi_night_clear";
+                break;
+            case "02d":
+            case "02n":
+                drawableName = "wi_day_cloudy";
+                break;
+            case "03d":
+            case "04d":
+                drawableName = "wi_day_cloudy";
+                break;
+            case "03n":
+            case "04n":
+                drawableName = "wi_night_cloudy";
+                break;
+            case "09d":
+            case "09n":
+                drawableName = "wi_day_showers";
+                break;
+            case "10d":
+            case "10n":
+                drawableName = "wi_day_rain";
+                break;
+            case "11d":
+            case "11n":
+                drawableName = "wi_day_thunderstorm";
+                break;
+            case "13d":
+            case "13n":
+                drawableName = "wi_day_snow";
+                break;
+            default:
+                drawableName = "wi_wu_clear";
+        }
+        return drawableName;
     }
 
 

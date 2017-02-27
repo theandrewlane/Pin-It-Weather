@@ -1,4 +1,4 @@
-package com.example.andrewlane.pin_itweather;
+package com.andrewlane.pin_itweather;
 
 import android.app.Application;
 import android.text.TextUtils;
